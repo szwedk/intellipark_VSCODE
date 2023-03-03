@@ -1,13 +1,9 @@
-const colors = require('tailwindcss/colors');
-
 module.exports = {
-  mode: 'jit',
-  purge: [
-    './app/**/*.{js,ts,jsx,tsx}',
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-    './src/**/*.html',
-    './src/**/*.js',
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "['./src/**/*.html', './src/**/*.js']",
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -21,8 +17,8 @@ module.exports = {
           DEFAULT: '#3C4CAD',
           dark: '#252B42',
         },
-        gray: colors.trueGray,
-        green: colors.green,
+        gray: require('tailwindcss/colors').trueGray,
+        green: require('tailwindcss/colors').green,
       },
       animation: {
         wiggle: 'wiggle 1s ease-in-out infinite',
@@ -39,4 +35,8 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  corePlugins: {
+    preflight: false,
+  },
+  purge: ['./src/**/*.{js,ts,jsx,tsx}'],
 };

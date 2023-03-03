@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from 'src/styles/login.module.css';
 
 export default function Login() {
     return (

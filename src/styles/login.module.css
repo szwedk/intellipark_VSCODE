@@ -1,111 +1,138 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@500&display=swap');
 
-@layer utilities {
-    body {
-        font-family: 'Poppins', 'sans-serif';
-    }
+body {
+    font-family: 'Poppins', 'sans-serif';
+    min-height: 100vh;
+    background: linear-gradient(to left, #E8A49C, #3C4CAD);
+    display: flex;
+    align-content: center !important;
+    justify-content: center;
 }
 
-@layer base {
-    .global {
-
-    *::before,
-    *::after {
-        @apply box-border;
-    }
-
-    * {
-        @apply box-border;
-    }
-}
+.login-card{
+    position: relative;
+    width: 500px;
+    background: rgba(225,225,225,.3);
+    padding: 6rem;
+    border-radius: 20px;
+    transition: 0.6s ease-in-out;
+    margin: auto !important;
 }
 
-@tailwind components;
-@tailwind utilities;
-
-.login-card {
-    @apply relative w-4/5 opacity-90 bg-opacity-70 bg-white p-6 md:p-8 rounded-lg transition-all duration-300 ease-in-out m-12 md:m-auto;
-}
-
-.login-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    opacity: 1;
-}
-
-.login-card img {
-    @apply w-full;
+.login-card img{
+    width: 100px;
 }
 
 .login-card-logo,
 .login-card-header,
 .login-card-footer {
-    @apply text-center mx-auto;
+    text-align: center;
+    margin: auto;
 }
 
-.login-card a {
-    @apply no-underline flex justify-center;
+.login-card a{
+    text-decoration: none;
+    align-content: center;
+    justify-content: center;
+}
+.login-card a:hover{
+    text-decoration: underline;
 }
 
-.login-card a:hover {
-    @apply underline;
+.login-card-header{
+    margin-bottom: 2rem;
+
 }
 
-.login-card-header {
-    @apply mb-8;
-}
-
-.login-card-form {
-    @apply flex flex-col gap-6;
+.login-card-form{
+    display:flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 .login-card-form .form-item {
-    @apply relative w-96;
+    position: relative;
+    width: 24rem;
 }
-
 .login-card-form .form-item .form-item-icon {
-    @apply absolute top-2 left-2 text-gray-400 text-lg;
+    position: absolute;
+    top: 82rem;
+    left: 1.4rem;
+    font-size: 1.3rem;
+    color: #747a81;
 }
 
 .login-card-form .form-item .label {
-    @apply absolute left-3 top-3 pointer-events-none text-gray-400 transition duration-500;
+    position: absolute;
+    left: 20px;
+    top: 14px;
+    pointer-events: none;
+    font-size: 14px;
+    color: #747a81;
+    transition: .5s;
 }
 
 .login-card-form .checkbox {
-    @apply flex items-center gap-2;
+    display: flex;
+    align-items: center;
+    gap: 7px;
 }
 
 .login-card-form .form-item-other {
-    @apply flex items-center justify-between text-sm mb-2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: calc(1rem*.8);
+    margin-bottom: .5rem;
 }
 
 .login-card-footer {
-    @apply mt-6 text-sm;
+    margin-top: 1.5rem;
+    font-size: calc(1rem*.8);
 }
 
 .login-card input[type="text"],
-.login-card input[type="password"] {
-    @apply bg-opacity-30 bg-gray-100 border-none outline-none px-6 py-4 pl-20 rounded-full w-full;
+.login-card input[type="text"] {
+    border: none;
+    outline: none;
+    background: rgba(225,225,225,.3);
+    padding: 1rem 1.5rem 1rem calc(1.5rem * 4);
+    border-radius: 100px;
+    width: 100%;
 }
 
 .login-card input[type="text"]:valid,
-.login-card input[type="password"]:valid,
+.login-card input[type="text"]:valid,
 .login-card input[type="text"]:focus,
-.login-card input[type="password"]:focus {
-    @apply bg-gray-300 transition-all duration-500 ease-in-out;
+.login-card input[type="text"]:focus {
+    background: rgba(225,225,225,.7);
+    transition: width .5s ease;
 }
 
+
+
 .login-card input[type="text"]:valid ~ .label,
-.login-card input[type="password"]:valid ~ .label,
+.login-card input[type="text"]:valid ~ .label,
 .login-card input[type="text"]:focus ~ .label,
-.login-card input[type="password"]:focus ~ .label {
-    @apply text-gray-600 transform translate-x-0 translate-y-0 scale-100 transition-all duration-500 ease-in-out;
+.login-card input[type="text"]:focus ~ .label {
+    color: black;
+    transform: translate(-2px);
 }
 
 .login-card-form button {
-    @apply bg-gray-300 border-none text-black uppercase tracking-wider py-4 px-6 rounded-full transition duration-1000 ease-in-out;
+    background: rgba(225,225,225,.7);;
+    border: none;
+    color: black;
+    padding: 1rem;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: background 1s;
 }
 
-.login-card-form button:hover {
-    @apply bg-black text-gray-300 cursor-pointer transition duration-1000 ease-in-out;
+.login-card-form button:hover{
+    background-color: rgba(0,0,0,.85);
+    color: rgba(225,225,225,.7);
+    transition: background 1.5s;
+    cursor: pointer;
 }
