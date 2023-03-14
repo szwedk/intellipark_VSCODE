@@ -4,10 +4,17 @@
 @tailwind components;
 @tailwind utilities;
 
+html{
+    scroll-behavior: smooth;
+    font-family: 'Poppins', 'sans-serif';
+}
+
+
+
 body {
     font-family: 'Poppins', sans-serif;
     min-height: 100vh;
-    background: linear-gradient(to left, #E8A49C, #3C4CAD);
+    background: linear-gradient(to bottom left, #E8A49C, #3C4CAD);
     display: flex;
     align-content: center !important;
     justify-content: center;

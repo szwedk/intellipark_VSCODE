@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@500&display=swap');
 
-body {
+.body {
     font-family: 'Poppins', 'sans-serif';
     min-height: 100vh;
     background: linear-gradient(to left, #E8A49C, #3C4CAD);
@@ -135,4 +135,15 @@ body {
     color: rgba(225,225,225,.7);
     transition: background 1.5s;
     cursor: pointer;
+}
+.fadeIn{
+    animation: 0.5s fadeIn forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeIn{
+    to {
+        scale: 1;
+        opacity: 1;
+    }
 }

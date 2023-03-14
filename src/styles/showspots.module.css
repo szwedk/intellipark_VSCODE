@@ -1,0 +1,67 @@
+.my-class *, .my-class *:before, .my-class *:after {
+    box-sizing: border-box;
+}
+
+
+.car-park {
+    margin: 20px auto;
+    max-width: 300px;
+    padding: 5rem;
+
+}
+
+
+
+.parks {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+
+}
+
+.park {
+    display: flex;
+    flex: 1;
+    padding: 1rem;
+    position: relative;
+    height: 10rem;
+}
+.row {
+    width: 20rem;
+}
+
+.park input[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+
+}
+.park input[type=checkbox]:checked + label {
+    background: #bada55;
+
+}
+
+
+
+.park label {
+    display: block;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.5rem;
+    padding: 4px 0;
+    background: #F42536;
+    border-radius: 5px;
+    animation-duration: 300ms;
+    animation-fill-mode: both;
+}
+
+
+.park label:hover {
+    cursor: pointer;
+
+}
+
+
