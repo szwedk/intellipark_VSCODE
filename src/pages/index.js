@@ -24,10 +24,7 @@ export default function Home() {
                     <button className='button-login'
                     >Spots</button>
                 </Link>
-                <Link href="/showspots">
-                    <button className='button-login'
-                    >Spots</button>
-                </Link>
+                
             </div>
         </div>
     );
