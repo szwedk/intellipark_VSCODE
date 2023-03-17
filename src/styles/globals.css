@@ -19,3 +19,12 @@ body {
     align-content: center !important;
     justify-content: center;
 }
+
+
+.button-login {
+    @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+}
+
+.parking-icon {
+    @apply text-black text-4xl;
+}

@@ -1,44 +1,61 @@
-import styles from 'src/styles/showspots.module.css';
+import 'tailwindcss/tailwind.css';
 
 export default function CarPark() {
-    return (
-        <div className={styles["car-park"]}>
-                <li className={`${styles["row"]} `}>
-                    <ol className={`${styles["parks"]}`} type="A">
-                        <li className={`${styles["park"]}`}>
-                            <input type="checkbox" id="1A" />
-                            <label htmlFor="1A">1A</label>
-                        </li>
-                        <li className={`${styles["park"]}`}>
-                            <input type="checkbox" id="1B" />
-                            <label htmlFor="1B">1B</label>
-                        </li>
-                    </ol>
-                </li>
-                <li className={`${styles["row"]} `}>
-                    <ol className={`${styles["parks"]}`} type="A">
-                        <li className={`${styles["park"]}`}>
-                            <input type="checkbox" id="2A" />
-                            <label htmlFor="2A">2A</label>
-                        </li>
-                        <li className={`${styles["park"]}`}>
-                            <input type="checkbox" id="2B" />
-                            <label htmlFor="2B">2B</label>
-                        </li>
-                    </ol>
-                </li>
-                <li className={`${styles["row"]} `}>
-                    <ol className={`${styles["parks"]}`} type="A">
-                        <li className={`${styles["park"]}`}>
-                            <input type="checkbox" id="3A" />
-                            <label htmlFor="3A">3A</label>
-                        </li>
-                        <li className={`${styles["park"]}`}>
-                            <input type="checkbox" id="3B" />
-                            <label htmlFor="3B">3B</label>
-                        </li>
-                    </ol>
-                </li>
-        </div>
-    );
+  return (
+    <div className="mx-auto max-w-sm p-20">
+      <ul className="space-y-4">
+        <li className="flex flex-wrap justify-center">
+          {['1A', '1B'].map((id) => (
+            <div key={id} className="relative p-4 w-1/2">
+              <input
+                type="checkbox"
+                id={id}
+                className="absolute opacity-0"
+              />
+              <label
+                htmlFor={id}
+                className="block w-full text-center font-bold text-sm leading-6 px-4 py-2 bg-red-600 rounded-md transition-colors duration-300 ease-in-out hover:bg-green-600"
+              >
+                {id}
+              </label>
+            </div>
+          ))}
+        </li>
+        <li className="flex flex-wrap justify-center">
+          {['2A', '2B'].map((id) => (
+            <div key={id} className="relative p-4 w-1/2">
+              <input
+                type="checkbox"
+                id={id}
+                className="absolute opacity-0"
+              />
+              <label
+                htmlFor={id}
+                className="block w-full text-center font-bold text-sm leading-6 px-4 py-2 bg-red-600 rounded-md transition-colors duration-300 ease-in-out hover:bg-green-600"
+              >
+                {id}
+              </label>
+            </div>
+          ))}
+        </li>
+        <li className="flex flex-wrap justify-center">
+          {['3A', '3B'].map((id) => (
+            <div key={id} className="relative p-4 w-1/2">
+              <input
+                type="checkbox"
+                id={id}
+                className="absolute opacity-0"
+              />
+              <label
+                htmlFor={id}
+                className="block w-full text-center font-bold text-sm leading-6 px-4 py-2 bg-red-600 rounded-md transition-colors duration-300 ease-in-out hover:bg-green-600"
+              >
+                {id}
+              </label>
+            </div>
+          ))}
+        </li>
+      </ul>
+    </div>
+  );
 }

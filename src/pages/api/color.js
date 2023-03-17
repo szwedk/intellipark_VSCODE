@@ -4,7 +4,7 @@ import xlsx from 'xlsx';
 
 
 export default async function handler(req, res) {
-    const filePath = join(process.cwd(), '/public/data_streamer.xlsx');
+    const filePath = join(process.cwd(), '/public/excel/data_streamer.xlsx');
     const fileData = await readFile(filePath);
     const workbook = xlsx.read(fileData, { type: 'buffer' });
     const worksheet = workbook.Sheets[workbook.SheetNames[0]];
