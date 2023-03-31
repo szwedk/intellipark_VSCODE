@@ -24,7 +24,7 @@ export default function Home() {
                     <button className='button-login'
                     >Spots</button>
                 </Link>
-                <p>hello rian you shoyld see this!</p>
+                
             </div>
         </div>
     );
