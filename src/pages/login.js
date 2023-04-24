@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase_setup/firebase.js';
+import firebase from 'firebase/compat/app';
 import 'tailwindcss/tailwind.css';
 
 export default function Login() {
@@ -13,6 +14,13 @@ export default function Login() {
 
   const signIn = () => {
     auth.signInWithEmailAndPassword(email, password).catch((error) => {
+      console.log(error);
+    });
+  };
+
+  const signInWithGoogle = () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider).catch((error) => {
       console.log(error);
     });
   };
@@ -66,6 +74,12 @@ export default function Login() {
             onClick={signIn}
           >
             Login
+          </button>
+          <button
+            className="w-full py-4 bg-opacity-70 bg-gray-100 text-black rounded-full uppercase tracking-wider transition-colors duration-500 hover:bg-black hover:bg-opacity-85 hover:text-gray-100 mt-4"
+            onClick={signInWithGoogle}
+          >
+            Login with Google
           </button>
         </div>
         <div className="text-center mt-6 text-sm">
