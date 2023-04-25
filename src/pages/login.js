@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase_setup/firebase.js';
 import firebase from 'firebase/compat/app';
+import GoogleButton from 'react-google-button';
 import 'tailwindcss/tailwind.css';
 
 export default function Login() {
@@ -39,56 +40,8 @@ export default function Login() {
         <div className="text-center mb-8">
           <div>Welcome to intelliPARK</div>
         </div>
-        <div className="flex flex-col gap-6">
-          <div className="relative w-full">
-            <input
-              className="w-full py-4 bg-opacity-70 bg-gray-100 text-black rounded-full"
-              type="email"
-              required
-              placeholder="Username"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div className="relative w-full">
-            <input
-              className="w-full py-4 bg-opacity-70 bg-gray-100 text-black rounded-full"
-              type="password"
-              required
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          <div className="flex justify-between items-center text-sm mb-2">
-            <div className="flex items-center gap-2">
-              <input type="checkbox" id="remember_me_check_box" />
-              <label htmlFor="remember_me_check_box">Remember me</label>
-            </div>
-            <Link href="#">
-              <span className="">Forgot password?</span>
-            </Link>
-          </div>
-          <button
-            className="w-full py-4 bg-opacity-70 bg-gray-100 text-black rounded-full uppercase tracking-wider transition-colors duration-500 hover:bg-black hover:bg-opacity-85 hover:text-gray-100"
-            onClick={signIn}
-          >
-            Login
-          </button>
-          <button
-            className="w-full py-4 bg-opacity-70 bg-gray-100 text-black rounded-full uppercase tracking-wider transition-colors duration-500 hover:bg-black hover:bg-opacity-85 hover:text-gray-100 mt-4"
-            onClick={signInWithGoogle}
-          >
-            Login with Google
-          </button>
-        </div>
-        <div className="text-center mt-6 text-sm">
-          Create an Account{' '}
-          <Link href="#">
-            <span className="hover:underline">Sign Up</span>
-                    </Link>
-                </div>
-            </div>
-        </div>
-    );
+        <div className='flex justify-center items-center'><GoogleButton onClick={signInWithGoogle} /></div>
+      </div>
+    </div>
+  );
 }

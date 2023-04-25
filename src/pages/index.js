@@ -12,10 +12,10 @@ export default function Home() {
             <hero />
             <div className='index-box flex flex-col items-center space-y-4'>
                 <h1>IntelliPARK</h1>
-                <Link href="/Signin">
+                {/*<Link href="/Signin">
                     <button className='button-login'
                     >Login</button>
-                </Link>
+                    </Link>*/}
                 <Link href="/parking">
                     <button className='button-login'
                     >Parking</button>

@@ -1,6 +1,7 @@
 import 'tailwindcss/tailwind.css';
+import withAuth from '../withAuth'; // Import the withAuth HOC
 
-export default function CarPark() {
+function CarPark() {
   return (
     <div className="mx-auto max-w-sm p-20">
       <ul className="space-y-4">
@@ -59,3 +60,5 @@ export default function CarPark() {
     </div>
   );
 }
+
+export default withAuth(CarPark); // Wrap the CarPark component with the withAuth HOC

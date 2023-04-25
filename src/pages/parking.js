@@ -1,8 +1,10 @@
+
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import 'tailwindcss/tailwind.css';
+import withAuth from '../withAuth'; // Import the withAuth HOC
 
-export default function Parking() {
+function Parking() {
     const [boxColor, setBoxColor] = useState('');
 
     useEffect(() => {
@@ -79,3 +81,4 @@ export default function Parking() {
     );
 }
 
+export default withAuth(Parking);
