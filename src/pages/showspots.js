@@ -28,7 +28,7 @@ function CarPark() {
     <div className="flex justify-center items-center min-h-screen">
       <div className="relative w-96 bg-opacity-30 bg-gray-100 p-12 rounded-xl transition-all duration-500 mx-auto">
         <div className="mx-auto max-w-sm p-20">
-          <ul className="space-y-4">
+          <ul className="mr-20">
             {['1A', '1B', '2A', '2B', '3A', '3B'].map((id) => (
               <li key={id} className="flex justify-center">
                 <div className="relative p-4 w-1/2">
