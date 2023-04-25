@@ -27,21 +27,8 @@ export default function Login() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen">
-      <Head>
-        <title>Login</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" integrity="sha512-TM9X8l0WUM5lAaSjE0VEIVAS8fvqlxQ2vZ4jALofzD9Ad8kAsC6RvufA94dU6Q2i/RM3CCIMbZ+zsBpUUqi7g==" crossOrigin="anonymous" referrerPolicy="no-referrer" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-      </Head>
-      <div className="relative w-96 bg-opacity-30 bg-gray-100 p-12 rounded-xl transition-all duration-500 mx-auto">
-        <div className="text-center">
-          <Image src="/images/intelliPARK-logo.png" alt="logo" width={130} height={100} />
-        </div>
-        <div className="text-center mb-8">
-          <div>Welcome to intelliPARK</div>
-        </div>
-        <div className='flex justify-center items-center'><GoogleButton onClick={signInWithGoogle} /></div>
-      </div>
-    </div>
+    
+            <div className='flex justify-center items-center'><GoogleButton onClick={signInWithGoogle} /></div>
+
   );
 }

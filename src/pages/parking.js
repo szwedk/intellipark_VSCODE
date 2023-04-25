@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import 'tailwindcss/tailwind.css';
@@ -6,13 +5,36 @@ import withAuth from '../withAuth'; // Import the withAuth HOC
 
 function Parking() {
     const [boxColor, setBoxColor] = useState('');
+    const [spotAvailable, setSpotAvailable] = useState('');
+    const [timeArrived, setTimeArrived] = useState('');
+    const [timeElapsed, setTimeElapsed] = useState(0);
 
     useEffect(() => {
+        let timer;
+        let colorChangedTime;
         const intervalId = setInterval(() => {
             fetch('/api/color')
                 .then(response => response.json())
                 .then(data => {
                     setBoxColor(data.color);
+                    setSpotAvailable(data.color === 'green' ? 'Yes' : 'No');
+                    if (data.color === 'red' && !colorChangedTime) {
+                        colorChangedTime = new Date().toLocaleString('en-US', { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                        setTimeArrived(colorChangedTime);
+                    }
+                    if (data.color === 'red') {
+                        if (!timer) {
+                            timer = setInterval(() => {
+                                setTimeElapsed(prevTime => prevTime + 1);
+                            }, 1000);
+                        }
+                    } else {
+                        clearInterval(timer);
+                        timer = null;
+                        setTimeElapsed(0);
+                        setTimeArrived('');
+                        colorChangedTime = null;
+                    }
                 })
                 .catch(error => {
                     console.log(error);
@@ -21,64 +43,60 @@ function Parking() {
 
         return () => {
             clearInterval(intervalId);
+            clearInterval(timer);
         };
     }, []);
 
+    const formatTime = (time) => {
+        if (!time) {
+          return '00:00:00';
+        }
+        if (typeof time !== 'string') {
+          return time;
+        }
+        const [hours, minutes, seconds] = time.split(':');
+        return `${hours.padStart(2, '0')}:${minutes.padStart(2, '0')}:${seconds.padStart(2, '0')}`;
+      };
+
     return (
         <>
-            <Head>
-                <title>Parking</title>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
-            </Head>
+          <Head>
+            <title>Parking</title>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
+          </Head>                
+          <div className="flex justify-center items-center min-h-screen">
+    <div className="relative w-98 bg-opacity-30 bg-gray-100 p-12 rounded-xl transition-all duration-500">
 
-            <div className="min-h-screen flex items-center justify-center bg-gradient-to-l from-e8a49c via-3c4cad">
-                <div className="relative w-500 p-24 bg-opacity-30 bg-gray-200 rounded-2xl transition-all duration-300">
-                    <div className="flex items-center justify-between p-4">
-                        <i className="text-maroon text-4xl fas fa-location-dot"></i>
-                        <input
-                            type="text"
-                            placeholder='Search for Spot'
-                            className="w-4/5 text-xl font-semibold pl-8 text-black"
-                        />
-                        <button className="w-12 h-12 text-maroon bg-white rounded-full text-4xl transition-colors duration-300 hover:text-white hover:bg-maroon">
-                            <i className="fas fa-magnifying-glass"></i>
-                        </button>
-                    </div>
+      <div className="flex items-center justify-center px-32 py-8">
+        <div className="w-40 h-40 mr-16 relative flex justify-center items-center rounded-2xl"style={{ backgroundColor: boxColor }}>
+          <img src="" className="w-3/5 mt-12" />
+        </div>
 
-                    <div className="text-center mt-12 opacity-0 hidden">
-                        <img src="/404notfound.png" className="w-2/3 mx-auto" />
-                        <p className="text-2xl font-semibold mt-4 text-black">Oops! No Parking Spot :/</p>
-                    </div>
+        <div className="text-center">
+          <div className="relative mb-8 bg-gray-300 p-4 rounded-md">
+            <i className="parking-icon fas fa-car mr-4"></i>
+            <p className="text-black text-xl font-semibold inline">Spot Availibility</p>
+            <div className="mt-4 text-3xl">{spotAvailable}</div>
+          </div>
 
-                    <div className="flex items-center justify-center px-32 py-8">
-                        <div className="w-40 h-40 mr-16 relative flex justify-center items-center rounded-2xl"style={{ backgroundColor: boxColor }}>
-                            <img src="" className="w-3/5 mt-12" />
-                        </div> 
-                        
-                        <div className="text-center">
-                            <div className="relative mb-8">
-                                <i className="parking-icon fas fa-car"></i>
-                                <span className="absolute -ml-4 text-3xl"></span>
-                                <p className="text-black text-xl font-semibold mt-12">Spot Availibility</p>
-                            </div>
+          <div className="relative mb-8 bg-gray-300 p-4 rounded-md">
+            <i className="parking-icon fas fa-clock mr-4"></i>
+            <p className="text-black text-xl font-semibold inline">Time Arrived</p>
+            <div className="mt-4 text-3xl">{formatTime(timeArrived)}</div>
+          </div>
 
-                            <div className="relative mb-8">
-                                <i className="parking-icon fas fa-clock"></i>
-                                <span className="absolute -ml-4 text-3xl"></span>
-                                <p className="text-black text-xl font-semibold mt-12">Time Arrived</p>
-                            </div>
-
-                            <div className="relative">
-                                <i className="parking-icon fas fa-stopwatch"></i>
-                                <span className="absolute -ml-4 text-3xl"></span>
-                                <p className="text-black text-xl font-semibold mt-12">Time Elapsed</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </>
+          <div className="relative bg-gray-300 p-4 rounded-md">
+            <i className="parking-icon fas fa-stopwatch mr-4"></i>
+            <p className="text-black text-xl font-semibold inline">Time Elapsed</p>
+            <div className="mt-4 text-3xl">{(timeElapsed)}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</>
     );
 }
+
 
 export default withAuth(Parking);
