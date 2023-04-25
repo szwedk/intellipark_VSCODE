@@ -1,12 +1,14 @@
-import React from 'react'
+import React from 'react';
 
-const navbar = () => {
+
+const NavigationBar = () => {
+    const hostname = process.env.HOSTNAME;
     return (
-        <div>
-            <h1>navbar</h1>
-        </div>
-    )
+        <nav className='justify-between'>
+            <a href="/" style={{fontWeight: 'bold', color: hostname === '/' ? 'red' : 'black',padding: "10px"}}>Home</a>
+            <a href="./auth_signout" style={{fontWeight: 'bold', color: hostname === '/contact' ? 'red' : 'black'}}>Sign Out</a>
+        </nav>
+    );
+};
 
-}
-
-export default navbar
+export default NavigationBar;
