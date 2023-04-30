@@ -1,12 +1,16 @@
 import React from 'react';
-
+import Link from 'next/link';
 
 const NavigationBar = () => {
     const hostname = process.env.HOSTNAME;
     return (
         <nav className='justify-between'>
-            <a href="/" style={{fontWeight: 'bold', color: hostname === '/' ? 'red' : 'black',padding: "10px"}}>Home</a>
-            <a href="./auth_signout" style={{fontWeight: 'bold', color: hostname === '/contact' ? 'red' : 'black'}}>Sign Out</a>
+            <Link href="/">
+                <button style={{ fontWeight: 'bold', color: hostname === '/' ? 'red' : 'black', padding: "10px", border: "none", background: "none", cursor: "pointer" }}>Home</button>
+            </Link>
+            <Link href="/signout">
+                <button style={{ fontWeight: 'bold', color: hostname === '/contact' ? 'red' : 'black', border: "none", background: "none", cursor: "pointer" }}>Sign Out</button>
+            </Link>
         </nav>
     );
 };
