@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -9,15 +9,7 @@ import GoogleButton from 'react-google-button';
 import 'tailwindcss/tailwind.css';
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [user, loading, error] = useAuthState(auth);
-
-  const signIn = () => {
-    auth.signInWithEmailAndPassword(email, password).catch((error) => {
-      console.log(error);
-    });
-  };
 
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -27,8 +19,16 @@ export default function Login() {
   };
 
   return (
-    
-            <div className='flex justify-center items-center'><GoogleButton onClick={signInWithGoogle} /></div>
-
+    <div>
+      <div className="flex justify-center items-center">
+        {loading ? (
+          <p>Loading...</p>
+        ) : user ? (
+          <p>You are logged in as {user.email}</p>
+        ) : (
+          <GoogleButton onClick={signInWithGoogle} />
+        )}
+      </div>
+    </div>
   );
 }

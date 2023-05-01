@@ -1,26 +1,28 @@
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { signOut } from '../firebase_setup/firebase.js'; // Replace with your Firebase Auth utility
+import Link from 'next/link';
+import { googleSignOut } from '../firebase_setup/firebase.js';
 
 const SignOut = () => {
-  const router = useRouter();
-
   useEffect(() => {
     const handleSignOut = async () => {
       try {
-        // Sign out the user using Firebase Authentication
-        await signOut();
-        // Redirect the user to the index page
-        router.push('/');
+        await googleSignOut();
       } catch (error) {
         console.log('Error signing out:', error);
       }
     };
 
     handleSignOut();
-  }, [router]);
+  }, []);
 
-  return null; // or you can show a loading spinner or a message here
+  return (
+    <div>
+      <p>Signing out...</p>
+      <Link href="/">
+        <p>Go to Homepage</p>
+      </Link>
+    </div>
+  );
 };
 
 export default SignOut;

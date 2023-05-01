@@ -28,3 +28,9 @@ body {
 .parking-icon {
     @apply text-black text-4xl;
 }
+
+.grayed-out {
+    opacity: 0.5; /* Adjust the opacity to your desired level */
+    pointer-events: none; /* Disable pointer events on the element */
+  }
+  
