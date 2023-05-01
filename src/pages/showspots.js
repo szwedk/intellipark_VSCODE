@@ -17,7 +17,7 @@ function CarPark() {
     };
 
     fetchColor();
-    const interval = setInterval(fetchColor, 1000); // Fetch the color every 1000 milliseconds (1 second)
+    const interval = setInterval(fetchColor, 1000); // Fetch the color every second
 
     return () => {
       clearInterval(interval); // Clean up the interval when the component unmounts
@@ -33,7 +33,8 @@ function CarPark() {
               <li key={id} className="flex justify-center">
                 <div className="relative p-4 w-1/2">
                   <label
-                    className={`block w-full text-center font-bold text-sm leading-6 px-4 py-2 rounded-md transition-colors duration-300 ease-in-out ${
+                    className={`block w-full text-center font-bold text-sm leading-6 px-4 py-2 rounded-md transition-colors duration-300 ease-in-out 
+                    ${
                       id === '1A' && color === 'red' ? 'bg-red-600' : 'bg-green-600'
                     }`}
                   >
