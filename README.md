@@ -1,38 +1,102 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# IntelliPark VS Code Workspace
 
-## Getting Started
+This repository contains the developer workspace configuration for IntelliPark, a smart parking platform built to modernize campus parking operations through AI, computer vision, IoT, and real-time data visualization.
 
-First, run the development server:
+## What is IntelliPark
+
+IntelliPark is an integrated smart parking management system built for university campuses. It leverages cameras, machine learning, computer vision, and IoT devices to deliver real-time parking space monitoring, license plate recognition, and congestion prediction through an intuitive web and mobile application.
+
+The platform assists students, faculty, and public safety teams by improving access to parking information, reducing congestion, identifying unauthorized vehicles, and providing live analytics to inform operational decisions.
+
+## Key Features
+
+- Real-time availability tracking
+- License plate recognition (LPR)
+- Vehicle identification and violation detection
+- Hot-time prediction for congestion zones
+- Administrative panel for oversight and control
+- Web and mobile frontends with live sync
+
+## Workspace Overview
+
+This repo contains:
+- VS Code settings and tasks for IntelliPark development
+- Recommended extensions for consistency across machines
+- Dev container configuration for reproducible environments
+- Project snippets, launch configs, and helper scripts
+
+## Quick Start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+git clone https://github.com/szwedk/intellipark_VSCODE.git
+cd intellipark_VSCODE
+code .
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+When prompted, install recommended extensions. If using dev containers, select “Reopen in Container.”
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## VS Code Structure
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```
+.vscode/               # Editor settings, launch configs, tasks
+.devcontainer/         # Dev container definition (optional)
+snippets/              # Shared code snippets (optional)
+scripts/               # Automation helpers
+docs/                  # Architecture, API, or usage docs
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Example Settings
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```json
+{
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.formatOnSave": true,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true
+}
+```
 
-## Learn More
+### Recommended Extensions
 
-To learn more about Next.js, take a look at the following resources:
+```json
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "streetsidesoftware.code-spell-checker"
+  ]
+}
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tasks
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+You can define tasks in `.vscode/tasks.json`, for example:
 
-## Deploy on Vercel
+```json
+{
+  "label": "Start",
+  "type": "shell",
+  "command": "npm start",
+  "isBackground": true
+}
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Other useful tasks: `Build`, `Test`, `Lint`, `Format`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Development Timeline
+
+- 🟢 Requirements: Complete
+- ⚙️ Beta release: February 20, 2024
+- 🚀 Full launch: May 7, 2024
+
+## Deliverables
+
+- IntelliPark App (Web + Mobile)
+- Admin dashboard
+- API + system architecture docs
+- Public safety training modules
+- Post-launch support plan
+
+
+Kamil Szwed • [github.com/szwedk](https://github.com/szwedk)
